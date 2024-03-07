@@ -7,8 +7,8 @@ services:
   symfony:
     image: akryos/camp_symfony
     ports:
-      - "86:80" 
-    container_name: camp_symf_cont
+      - "64:80" 
+    container_name: camp_symf_cont_damien
     depends_on:
       - database
     restart: always
@@ -20,7 +20,7 @@ services:
   # Database Service(Mysql)
   database:
     image: mysql
-    container_name: camp_symf_db
+    container_name: camp_symf_db_damien
     volumes:
        - db_camp:/var/lib/mysql 
     restart: always
@@ -34,12 +34,12 @@ services:
   # phpmyadmin Service 
   phpmyadmin:
     image: phpmyadmin
-    container_name: camp_symf_phpad
+    container_name: camp_symf_phpad_damien
     depends_on:
       - database
     restart: always
     ports:
-      - 7069:80
+      - 4404:80
     environment:
       - PMA_ARBITRARY=1
     networks:

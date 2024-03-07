@@ -16,32 +16,6 @@ pipeline {
                 
                   }
             }
-
-             stage('Push image to dockerhub') {
-
-                 steps {
-
-                  sh 'docker tag camp_symfony akryos/camp_symfony'
-
-                  sh 'echo $DOCKERHUB_CREDENTIALS_PSW \
-                  | docker login -u $DOCKERHUB_CREDENTIALS_USR \
-                  --password-stdin'
-
-                  sh 'docker push akryos/camp_symfony'
-
-                       }
-                
-                post {
-
-                  always {
-
-                  sh 'docker logout'
-
-                         }
-
-                     }
-
-            }
             
             
             stage('Run docker-compose') {
